@@ -51,7 +51,7 @@ const createNewTaskElement = function (taskString) {
 };
 
 const addTask = function () {
-  if (!taskInput.value.trim()) return;
+  if (!taskInput.value) return;
 
   const listItem = createNewTaskElement(taskInput.value);
   incompleteTaskHolder.appendChild(listItem);
@@ -102,9 +102,9 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   const editButton = taskListItem.querySelector(".task-list__edit-button");
   const deleteButton = taskListItem.querySelector(".task-list__delete-button");
 
-  editButton.addEventListener("click", editTask);
-  deleteButton.addEventListener("click", deleteTask);
-  checkBox.addEventListener("change", checkBoxEventHandler);
+    editButton.onclick = editTask;
+    deleteButton.onclick = deleteTask;
+    checkBox.onchange = checkBoxEventHandler;
 };
 
 addButton.addEventListener("click", addTask);
@@ -119,8 +119,5 @@ for (let i = 0; i < completedTasksHolder.children.length; i++) {
 
 
 
-// Issues with usability don't get seen until they are in front of a human tester.
 
-//prevent creation of empty tasks.
 
-//Change edit to save when you are in edit mode.
